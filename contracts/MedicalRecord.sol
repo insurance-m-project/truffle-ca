@@ -44,7 +44,8 @@ contract MedicalRecord {
         uint256 totalOop,
         uint256 totalPcc,
         uint256 totalFoop,
-        uint256 nonReimbursement
+        uint256 nonReimbursement,
+        TreatmentDetail[] treatDetails
     );
 
     // 보험사 청구 데이터 저장
@@ -83,7 +84,7 @@ contract MedicalRecord {
 				medicalRecordKeys.push(_receiptNumber);
 				medicalRecordsCount++;
         
-        emit MedicalRecordSet(_name, _RRN, _KCD, _date, _receiptNumber, _totalOop, _totalPcc, _totalFoop, _nonReimbursement);
+        emit MedicalRecordSet(_name, _RRN, _KCD, _date, _receiptNumber, _totalOop, _totalPcc, _totalFoop, _nonReimbursement, _treatDetails);
     }
   
 
