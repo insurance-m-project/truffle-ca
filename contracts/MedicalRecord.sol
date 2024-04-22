@@ -31,7 +31,7 @@ contract MedicalRecord {
 
     // 속성
     string private constant DEFAULT_KCD = "J09"; // Default KCD value
-    string private constant DEFAULT_owner = "0x28cae9e57d8dd34eb6472526f04d4c12ffa9432b";
+    string private constant DEFAULT_owner = "0x28CAE9e57D8dD34eB6472526f04d4c12Ffa9432B";
     mapping(string => MedicalRecordData) private medicalRecords;
     uint256 public medicalRecordsCount;
     string[] private medicalRecordKeys;
@@ -127,9 +127,9 @@ contract MedicalRecord {
     }
 
     // 접수 기록 삭제
-    function deleteMedicalRecord(string memory _receiptNumber) public {
+    function deleteMedicalRecord(string memory _receiptNumber, string memory _sender) public {
         require(bytes(medicalRecords[_receiptNumber].name).length != 0, "No record found to delete.");
-        require(isOwner(), "Unauthorized access.");
+        require(isOwner(_sender), "Unauthorized access.");
 
         delete medicalRecords[_receiptNumber];
         removeKey(_receiptNumber);
@@ -156,8 +156,8 @@ contract MedicalRecord {
     }
 
     // 권한 확인
-    function isOwner() public view returns (bool) {
-	return keccak256(abi.encodePacked(msg.sender)) == keccak256(abi.encodePacked(DEFAULT_owner));
+    function isOwner(string memory _sender) public view returns (bool) {
+	return keccak256(bytes(_sender)) == keccak256(bytes(DEFAULT_owner));
     }
 }
 
