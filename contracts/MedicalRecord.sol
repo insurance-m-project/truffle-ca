@@ -31,7 +31,7 @@ contract MedicalRecord {
 
     // 속성
     string private constant DEFAULT_KCD = "J09"; // Default KCD value
-    string private constant DEFAULT_owner = "0x28CAE9e57D8dD34eB6472526f04d4c12Ffa9432B";
+    string private constant DEFAULT_owner = "0x584553326f444c7B849483FEB32E8DB5c1Fe0689";
     mapping(string => MedicalRecordData) private medicalRecords;
     uint256 public medicalRecordsCount;
     string[] private medicalRecordKeys;
